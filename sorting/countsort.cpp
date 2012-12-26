@@ -33,7 +33,7 @@ int countingSort(int *arr, int length) {
 		countbase[i] = 0;
 
 	int *count = countbase - min;
-	std::cout << count << ":" << countbase << " - " <<  &count[min] << "\n";
+	//std::cout << count << ":" << countbase << " - " <<  &count[min] << "\n";
 	for (int i = 0; i < length; i++) {
 		count[arr[i]]++;
 		cp[i] = arr[i];
