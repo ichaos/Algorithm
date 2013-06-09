@@ -1,6 +1,6 @@
 #include <iostream>
 
-int partition(int *arr, int s, int e) {
+inline int partition(int *arr, int s, int e) {
 	//find a pivot
 	int pivot = arr[s];
 	int i, j;
@@ -32,10 +32,11 @@ void _qsort(int *arr, int s, int e) {
 
 //quick sort
 
-void qsort(int *arr, int length) {
+void quicksort(int *arr, int length) {
 	_qsort(arr, 0, length - 1);
 }
 
+/*
 int main() {
 	int arr[] = {10, 5, 7, 1, 4, 2, 9, 3, 7, 8};
 
@@ -48,3 +49,4 @@ int main() {
 
 	return 0;
 }
+*/

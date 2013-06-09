@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <string>
+#include <map>
 
 using namespace std;
 
@@ -87,6 +88,33 @@ int kmp_match(string p, string s) {
         return -1;
 }
 
+int sunday_match(string p, string t) {
+        int m = p.length();
+        int n = t.length();
+        //build
+        map<char, int> pos;
+        for (int i = 0; i < m; i++) {
+                pos[p[i]] = i + 1;
+        }
+
+        for (int i = 0; i <= n - m; i++) {
+                int j;
+                for (j = 0; j < m; j++) {
+                        if (p[j] != t[i + j]) {
+                                char next = t[i + m];
+                                if (pos.find(next) == pos.end()) {
+                                        i += m;
+                                } else {
+                                        i += (m - pos[next]);
+                                }
+                                break;
+                        }
+                }
+                if (j == m) return i;
+        }
+        return -1;
+}
+
 int main(int argc, char *argv) {
         //test
         string p = "ab";
@@ -100,5 +128,7 @@ int main(int argc, char *argv) {
                      << kmp_match2(p, s) << endl;
                 cout << "substring test(kmp): " << p << " of " << s << " "
                      << kmp_match(p, s) << endl;
+                cout << "substring test(sunday): " << p << " of " << s << " "
+                     << sunday_match(p, s) << endl;
         }
 }
